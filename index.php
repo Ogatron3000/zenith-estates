@@ -1,7 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
-require 'helpers.php';
+require 'core/helpers.php';
 
 use Core\{App, Request, Router, Database\Connection};
 
