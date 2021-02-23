@@ -13,6 +13,8 @@ class Router
         = [
             'GET'  => [],
             'POST' => [],
+            'PUT' => [],
+            'DELETE' => [],
         ];
 
     public static function load($routes): Router
