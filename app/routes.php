@@ -1,5 +1,8 @@
 <?php
 
+// Welcome
+$router->get('', 'WelcomeController@index');
+
 // Real Estates
 $router->get('real-estates', 'RealEstateController@index');
 $router->get('real-estates/{id}', 'RealEstateController@show');

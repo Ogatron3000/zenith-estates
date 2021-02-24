@@ -12,4 +12,9 @@ class RealEstateController
         return RealEstate::all();
     }
 
+    public function show($data)
+    {
+        echo $data;
+    }
+
 }

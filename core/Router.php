@@ -11,9 +11,9 @@ class Router
 
     protected array $routes
         = [
-            'GET'  => [],
-            'POST' => [],
-            'PUT' => [],
+            'GET'    => [],
+            'POST'   => [],
+            'PUT'    => [],
             'DELETE' => [],
         ];
 
@@ -48,24 +48,41 @@ class Router
 
     public function direct($uri, $method)
     {
+        [$uri, $param] = $this->routeParam($uri);
+
         if (array_key_exists($uri, $this->routes[$method])) {
-            return $this->callAction(...
-                explode('@', $this->routes[$method][$uri]));
+            [$controller, $action] = explode('@', $this->routes[$method][$uri]);
+
+            return $this->callAction($controller, $action, $param);
         }
 
         throw new RuntimeException('No route defined.');
     }
 
-    public function callAction($controller, $action)
+    public function callAction($controller, $action, $data)
     {
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
 
         if ( ! method_exists($controller, $action)) {
-            throw new RuntimeException("No action {$action} defined on {$controller}");
+            throw new RuntimeException("No action {$action} defined on controller.");
         }
 
-        return $controller->$action();
+        return $controller->$action($data);
+    }
+
+    private function routeParam($uri): array
+    {
+        if (strpos($uri, '/') !== false) {
+            $tmp    = explode('/', $uri);
+            $param     = $tmp[1];
+            $tmp[1] = '{id}';
+            $uri    = implode('/', $tmp);
+
+            return [$uri, $param];
+        }
+
+        return [$uri, null];
     }
 
 }
