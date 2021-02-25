@@ -2,7 +2,7 @@
 
 return [
     'connection' => 'mysql:host=localhost',
-    'db'         => 'real_estate_agency',
+    'db'         => 'zenith_estates',
     'user'       => 'root',
     'password'   => '',
     'options'    => [
