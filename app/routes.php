@@ -5,10 +5,10 @@ $router->get('', 'WelcomeController@index');
 
 // Real Estates
 $router->get('real-estates', 'RealEstateController@index');
-$router->get('real-estates/{id}', 'RealEstateController@show');
 $router->get('real-estates/create', 'RealEstateController@create');
+$router->get('real-estates/{id}', 'RealEstateController@show');
 $router->post('real-estates', 'RealEstateController@store');
-$router->get('real-estates/edit', 'RealEstateController@edit');
+$router->get('real-estates/{id}/edit', 'RealEstateController@edit');
 $router->put('real-estates/{id}', 'RealEstateController@update');
 $router->delete('real-estates/{id}', 'RealEstateController@destroy');
 

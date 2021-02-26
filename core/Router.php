@@ -56,7 +56,7 @@ class Router
             return $this->callAction($controller, $action, $param);
         }
 
-        throw new RuntimeException('No route defined.');
+        return abort();
     }
 
     public function callAction($controller, $action, $data)
@@ -73,9 +73,9 @@ class Router
 
     private function routeParam($uri): array
     {
-        if (strpos($uri, '/') !== false) {
+        if (strpos($uri, '/') !== false && strpos($uri, 'create') === false) {
             $tmp    = explode('/', $uri);
-            $param     = $tmp[1];
+            $param  = $tmp[1];
             $tmp[1] = '{id}';
             $uri    = implode('/', $tmp);
 

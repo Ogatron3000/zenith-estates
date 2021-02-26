@@ -6,8 +6,8 @@ namespace App\Controllers;
 
 class WelcomeController
 {
-    public function index(): void
+    public function index()
     {
-        echo 'Welcome!';
+        return view('welcome');
     }
 }
