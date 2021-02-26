@@ -57,6 +57,13 @@ class RealEstateController
         return view('real_estates.edit', compact('real_estate', 'cities', 'ad_types', 're_types'));
     }
 
+    public function update()
+    {
+        RealEstate::update($_POST);
+
+        return redirect("real-estates");
+    }
+
     public function destroy($id)
     {
         RealEstate::delete($id);

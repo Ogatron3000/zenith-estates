@@ -1,7 +1,9 @@
 <?php
 partial('header'); ?>
 
-    <form action="real-estates" method="POST" class="p-6 bg-yellow-200">
+    <form action="<?= "../" . $real_estate->id ?>" method="POST" class="p-6 bg-yellow-200">
+        <input type="hidden" name="method" value="PUT">
+        <input type="hidden" name="id" value="<?= $real_estate->id ?>">
         <div class="flex flex-col w-60 mb-4">
             <label for="name">Name</label>
             <input type="text"
@@ -36,7 +38,7 @@ partial('header'); ?>
         </div>
         <div class="flex flex-col w-60 mb-4">
             <label for="city">City</label>
-            <select name="re_type_id"
+            <select name="city_id"
                     id="re_type"
                     class="p-1 border border-black">
                 <?php
@@ -53,7 +55,7 @@ partial('header'); ?>
         </div>
         <div class="flex flex-col w-60 mb-4">
             <label for="city">Ad Type</label>
-            <select name="re_type_id"
+            <select name="ad_type_id"
                     id="re_type"
                     class="p-1 border border-black">
                 <?php

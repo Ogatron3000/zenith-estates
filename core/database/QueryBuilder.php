@@ -79,6 +79,29 @@ class QueryBuilder
         }
     }
 
+    public static function update($data, $table = '')
+    {
+
+        if ( ! $table) {
+            $table = self::determineTable($table);
+        }
+
+        $values = '';
+
+        foreach (array_slice($data, 1) as $key => $value) {
+            $values .= "{$key}='{$value}', ";
+        }
+        $values = rtrim($values, ', ');
+
+        try {
+            // this is not good!
+            // first PREPARE, then BIND parameters!!!
+            Database::query("UPDATE {$table} SET {$values} WHERE id = {$data['id']}");
+        } catch (Exception $e) {
+            die('Whoops, something went wrong.');
+        }
+    }
+
     public static function delete($id, $table = '')
     {
         if ( ! $table) {

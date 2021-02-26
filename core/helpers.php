@@ -13,7 +13,7 @@ function view($file, $data = [])
 
 function redirect($path)
 {
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header("Location: /{$path}");
 }
 
 function dd($value)
