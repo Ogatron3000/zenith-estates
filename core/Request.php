@@ -13,7 +13,9 @@ class Request
     public static function method(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['method'])) {
-            return $_POST['method'];
+            $method = $_POST['method'];
+            $_POST = array_slice($_POST, 1);
+            return $method;
         }
 
         return $_SERVER['REQUEST_METHOD'];
