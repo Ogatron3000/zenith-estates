@@ -32,3 +32,53 @@ function abort()
 {
     return view('404');
 }
+
+function validate($data) {
+
+    $validated = [];
+    $errors = [];
+
+    foreach ($data as $field => $reqs) {
+        foreach ($reqs as $req) {
+            switch ($req) {
+                case 'required':
+                    if ( ! isset($_POST[$field]) || empty($_POST[$field])) {
+                        $errors[$field] = 'Field is required.';
+                        continue 3;
+                    }
+                    break;
+                case 'int':
+                    if ( ! is_numeric($_POST[$field])) {
+                        $errors[$field] = 'Field must be numeric.';
+                        continue 3;
+                    }
+                    break;
+                case 'string':
+                    if ( ! is_string($_POST[$field])) {
+                        $errors[$field] = 'Field must be text.';
+                        continue 3;
+                    }
+                    break;
+            }
+        }
+        if ( ! array_key_exists($field, $errors)) {
+            $validated[$field] = $_POST[$field];
+        }
+    }
+
+        if (array_key_exists('photos', $_FILES)) {
+            if ($_FILES['photos']['error'][0] === 4) {
+                $errors['photos'] = 'Field is required.';
+            } else {
+                $total = count($_FILES['photos']['name']);
+                for ($i = 0; $i < $total; $i++) {
+                    $fileInfo    = pathinfo($_FILES["photos"]["name"][$i]);
+                    if ($fileInfo['extension'] !== 'png' || $fileInfo['extension'] !== 'jpg') {
+                        $errors['photos'] = 'Photo must be .png or .jpg.';
+                    }
+                }
+            }
+    }
+
+    return [$validated, $errors];
+}

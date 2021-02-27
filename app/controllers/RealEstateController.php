@@ -39,7 +39,24 @@ class RealEstateController
 
     public function store()
     {
-        $real_estate_id = RealEstate::insert($_POST);
+        [$validated, $errors] = validate([
+            'city_id' => ['required', 'int'],
+            'ad_type_id' => ['required', 'int'],
+            're_type_id' => ['required', 'int'],
+            'area' => ['required', 'int'],
+            'price' => ['required', 'int'],
+            'year' => ['required', 'int'],
+            'description' => ['required', 'string']
+        ]);
+
+        if (count($errors) > 0) {
+            $cities   = City::all();
+            $ad_types = AdType::all();
+            $re_types = ReType::all();
+            return view('real_estates.create', compact('errors', 'cities', 'ad_types', 're_types'));
+        }
+
+        $real_estate_id = RealEstate::insert($validated);
 
         $this->store_photos($real_estate_id);
 
@@ -62,9 +79,30 @@ class RealEstateController
             compact('real_estate', 'cities', 'ad_types', 're_types'));
     }
 
-    public function update()
+    public function update($id)
     {
-        RealEstate::update($_POST);
+        [$validated, $errors] = validate([
+            'city_id' => ['required', 'int'],
+            'ad_type_id' => ['required', 'int'],
+            're_type_id' => ['required', 'int'],
+            'area' => ['required', 'int'],
+            'price' => ['required', 'int'],
+            'year' => ['required', 'int'],
+            'description' => ['required', 'string']
+        ]);
+
+        if (count($errors) > 0) {
+            $real_estate = RealEstate::findById($id);
+            $cities   = City::all();
+            $ad_types = AdType::all();
+            $re_types = ReType::all();
+
+            return view('real_estates.edit', compact('errors', 'real_estate', 'cities', 'ad_types', 're_types'));
+        }
+
+        RealEstate::update($validated);
+
+        $this->store_photos($id);
 
         return redirect("real-estates");
     }

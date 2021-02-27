@@ -5,11 +5,14 @@ partial('header'); ?>
 
         <div class="flex flex-col w-60 mb-4">
             <label for="city">City</label>
-            <select name="city_id" id="city" class="p-1 border border-black">
+            <select name="city_id"
+                    id="city"
+                    class="p-1 border border-black">
                 <?php foreach ($cities as $key => $value): ?>
                     <option value="<?= $cities[$key]->id ?>"><?= $cities[$key]->name ?></option>
                 <?php endforeach; ?>
             </select>
+            <?= isset($errors) && array_key_exists('city_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['city_id'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -21,6 +24,7 @@ partial('header'); ?>
                     <option value="<?= $ad_types[$key]->id ?>"><?= $ad_types[$key]->name ?></option>
                 <?php endforeach; ?>
             </select>
+            <?= isset($errors) && array_key_exists('ad_type_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['ad_type_id'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -32,6 +36,7 @@ partial('header'); ?>
                     <option value="<?= $re_types[$key]->id ?>"><?= $re_types[$key]->name ?></option>
                 <?php endforeach; ?>
             </select>
+            <?= isset($errors) && array_key_exists('re_type_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['re_type_id'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -40,6 +45,7 @@ partial('header'); ?>
                    name="area"
                    id="area"
                    class="p-1 border border-black">
+            <?= isset($errors) && array_key_exists('area', $errors) ? '<p class="text-sm text-red-500">' . $errors['area'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -48,6 +54,7 @@ partial('header'); ?>
                    name="price"
                    id="price"
                    class="p-1 border border-black">
+            <?= isset($errors) && array_key_exists('price', $errors) ? '<p class="text-sm text-red-500">' . $errors['price'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -56,6 +63,7 @@ partial('header'); ?>
                    name="year"
                    id="year"
                    class="p-1 border border-black">
+            <?= isset($errors) && array_key_exists('year', $errors) ? '<p class="text-sm text-red-500">' . $errors['year'] . '</p>' : '' ?>
         </div>
 
         <div class="flex flex-col w-60 mb-4">
@@ -63,7 +71,9 @@ partial('header'); ?>
             <textarea name="description"
                       id="description"
                       class="p-1 border border-black"></textarea>
+            <?= isset($errors) && array_key_exists('description', $errors) ? '<p class="text-sm text-red-500">' . $errors['description'] . '</p>' : '' ?>
         </div>
+
 
         <div class="flex flex-col w-60">
             <label for="photos">Add photos</label>
@@ -72,6 +82,7 @@ partial('header'); ?>
                    id="photos"
                    multiple
                    class="p-1 border border-black">
+            <?= isset($errors) && array_key_exists('photos', $errors) ? '<p class="text-sm text-red-500">' . $errors['photos'] . '</p>' : '' ?>
         </div>
 
         <button>Submit</button>
