@@ -37,7 +37,7 @@ class RealEstateController
             compact('cities', 'ad_types', 're_types'));
     }
 
-    public function store(): void
+    public function store()
     {
         $real_estate_id = RealEstate::insert($_POST);
 
@@ -62,14 +62,14 @@ class RealEstateController
             compact('real_estate', 'cities', 'ad_types', 're_types'));
     }
 
-    public function update(): void
+    public function update()
     {
         RealEstate::update($_POST);
 
         return redirect("real-estates");
     }
 
-    public function destroy($id): void
+    public function destroy($id)
     {
         RealEstate::delete($id);
 
