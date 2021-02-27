@@ -124,6 +124,12 @@ class QueryBuilder
         return $res[0];
     }
 
+    public static function hasMany($model, $table, $id)
+    {
+        return Database::query("SELECT * FROM $table WHERE real_estate_id = $id")
+            ->fetchAll(self::$class_code, "App\\Models\\" . $model);
+    }
+
     private static function determineTable($table): string
     {
         $table = strtolower(implode('_',

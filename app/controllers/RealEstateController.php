@@ -48,9 +48,10 @@ class RealEstateController
         for( $i=0 ; $i < $total ; $i++ ) {
             $tmpFilePath = $_FILES['photos']['tmp_name'][$i];
             if ($tmpFilePath != ""){
-                $newFilePath = __DIR__ . "/../../uploads/" . $_FILES['photos']['name'][$i];
+                $fileInfo = pathinfo($_FILES["photos"]["name"][$i]);
+                $newFilePath = "uploads/" . uniqid() . '.' . $fileInfo['extension'];
                 if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-                    Photo::insert(['real_estate_id' => $real_estate_id, 'path' => $newFilePath]);
+                    Photo::insert(['real_estate_id' => $real_estate_id, 'path' => "/" . $newFilePath]);
                 }
             }
         }

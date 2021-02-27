@@ -21,4 +21,9 @@ class RealEstate extends QueryBuilder
     {
         return RealEstate::hasOne('ReType', 're_types', $id, 'name');
     }
+
+    public function photos($id)
+    {
+        return RealEstate::hasMany('Photo', 'photos', $id);
+    }
 }

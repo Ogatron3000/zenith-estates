@@ -82,6 +82,7 @@ partial('header'); ?>
                       class="p-1 border border-black"><?= $real_estate->description ?></textarea>
         </div>
 
+        <!-- OLD VALUE missing -->
         <div class="flex flex-col w-60">
             <label for="photos">Add photos</label>
             <input type="file"
