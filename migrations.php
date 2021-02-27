@@ -58,6 +58,6 @@ Database::query("CREATE TABLE IF NOT EXISTS photos (
     path VARCHAR(255) NOT NULL,
     CONSTRAINT `fk_photo_real_estate`
         FOREIGN KEY (real_estate_id) REFERENCES real_estates (id)
-        ON DELETE RESTRICT
-        ON UPDATE RESTRICT
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 )");
