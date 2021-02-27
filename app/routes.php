@@ -14,17 +14,17 @@ $router->delete('real-estates/{id}', 'RealEstateController@destroy');
 
 // Cities
 $router->get('cities', 'CityController@index');
-$router->get('cities/create', 'CityController@create');
 $router->post('cities', 'CityController@store');
-$router->get('cities/edit', 'CityController@store');
+$router->get('cities/{id}/edit', 'CityController@edit');
 $router->put('cities/{id}', 'CityController@update');
 $router->delete('cities/{id}', 'CityController@destroy');
 
-// Ad Types
-$router->get('ad-types', 'AdTypeController@index');
-$router->post('ad-types', 'AdTypeController@store');
-$router->put('ad-types/{id}', 'AdTypeController@update');
-$router->delete('ad-types/{id}', 'AdTypeController@destroy');
+// Real Estate Types
+$router->get('re-types', 'ReTypeController@index');
+$router->post('re-types', 'ReTypeController@store');
+$router->get('re-types/{id}/edit', 'ReTypeController@edit');
+$router->put('re-types/{id}', 'ReTypeController@update');
+$router->delete('re-types/{id}', 'ReTypeController@destroy');
 
 
 

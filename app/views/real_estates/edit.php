@@ -1,7 +1,7 @@
 <?php
 partial('header'); ?>
 
-    <form action="<?= "../" . $real_estate->id ?>" method="POST" enctype="multipart/form-data" class="p-6 bg-yellow-200">
+    <form action="./" method="POST" enctype="multipart/form-data" class="p-6 bg-yellow-200">
 
         <input type="hidden" name="method" value="PUT">
         <input type="hidden" name="id" value="<?= $real_estate->id ?>">
@@ -83,16 +83,24 @@ partial('header'); ?>
         </div>
 
         <!-- OLD VALUE missing -->
-        <div class="flex flex-col w-60">
+        <div class="flex flex-col w-60 mb-4">
             <label for="photos">Add photos</label>
             <input type="file"
                    name="photos[]"
                    id="photos"
                    multiple
                    class="p-1 border border-black">
+            <?= isset($errors) && array_key_exists('photos', $errors) ? '<p class="text-sm text-red-500">' . $errors['photos'] . '</p>' : '' ?>
         </div>
 
-        <button>Submit</button>
+
+        <?php foreach ($real_estate->photos($real_estate->id) as $photo): ?>
+            <img src="<?= $photo->path ?>" alt="real estate photo" style="width: 150px; height: 150px; object-fit: cover; display: inline; border: black 2px solid; background: white">
+        <?php endforeach; ?>
+
+        <div>
+            <button class="border-2 border-black p-3 mt-4">Submit</button>
+        </div>
 
     </form>
 

@@ -62,6 +62,7 @@ function validate($data) {
             }
         }
         if ( ! array_key_exists($field, $errors)) {
+            $validated['id'] = $_POST['id'];
             $validated[$field] = $_POST[$field];
         }
     }
@@ -73,8 +74,8 @@ function validate($data) {
                 $total = count($_FILES['photos']['name']);
                 for ($i = 0; $i < $total; $i++) {
                     $fileInfo    = pathinfo($_FILES["photos"]["name"][$i]);
-                    if ($fileInfo['extension'] !== 'png' || $fileInfo['extension'] !== 'jpg') {
-                        $errors['photos'] = 'Photo must be .png or .jpg.';
+                    if ( ! ($fileInfo['extension'] === 'png' || $fileInfo['extension'] === 'jpg') ) {
+                        $errors['photos'] = 'Photos must be .png or .jpg.';
                     }
                 }
             }
