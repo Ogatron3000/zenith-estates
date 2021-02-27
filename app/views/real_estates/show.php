@@ -2,7 +2,6 @@
 partial('header'); ?>
 
     <div class="bg-yellow-200">
-        <h1><?= htmlspecialchars($real_estate->name) ?></h1>
         <h1><?= htmlspecialchars($real_estate->area) ?></h1>
         <h1><?= htmlspecialchars($real_estate->price) ?></h1>
         <h1><?= htmlspecialchars($real_estate->year) ?></h1>

@@ -5,7 +5,6 @@ partial('header'); ?>
     <?php
     foreach ($data as $real_estate): ?>
         <div class="p-8 bg-gray-100 m-4 w-50">
-            <h1><?= htmlspecialchars($real_estate->name) ?></h1>
             <h1><?= htmlspecialchars($real_estate->area) ?></h1>
             <h1><?= htmlspecialchars($real_estate->price) ?></h1>
             <h1><?= htmlspecialchars($real_estate->year) ?></h1>
