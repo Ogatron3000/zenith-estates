@@ -29,7 +29,6 @@ Database::query("CREATE TABLE IF NOT EXISTS re_types (
 // Real Estates Table
 Database::query("CREATE TABLE IF NOT EXISTS real_estates (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
     city_id INT(11) UNSIGNED NOT NULL,
     ad_type_id INT(11) UNSIGNED NOT NULL,
     re_type_id INT(11) UNSIGNED NOT NULL,
