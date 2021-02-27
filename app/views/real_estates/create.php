@@ -1,35 +1,8 @@
 <?php
 partial('header'); ?>
 
-    <form action="../real-estates" method="POST" class="p-6 bg-yellow-200">
-        <div class="flex flex-col w-60 mb-4">
-            <label for="name">Name</label>
-            <input type="text"
-                   name="name"
-                   id="name"
-                   class="p-1 border border-black">
-        </div>
-        <div class="flex flex-col w-60 mb-4">
-            <label for="area">Area</label>
-            <input type="text"
-                   name="area"
-                   id="area"
-                   class="p-1 border border-black">
-        </div>
-        <div class="flex flex-col w-60 mb-4">
-            <label for=price"">Price</label>
-            <input type="text"
-                   name="price"
-                   id="price"
-                   class="p-1 border border-black">
-        </div>
-        <div class="flex flex-col w-60 mb-4">
-            <label for="year">Year</label>
-            <input type="text"
-                   name="year"
-                   id="year"
-                   class="p-1 border border-black">
-        </div>
+    <form action="../real-estates" method="POST" enctype="multipart/form-data" class="p-6 bg-yellow-200">
+
         <div class="flex flex-col w-60 mb-4">
             <label for="city">City</label>
             <select name="city_id" id="city" class="p-1 border border-black">
@@ -38,6 +11,7 @@ partial('header'); ?>
                 <?php endforeach; ?>
             </select>
         </div>
+
         <div class="flex flex-col w-60 mb-4">
             <label for="city">Ad Type</label>
             <select name="ad_type_id"
@@ -48,6 +22,7 @@ partial('header'); ?>
                 <?php endforeach; ?>
             </select>
         </div>
+
         <div class="flex flex-col w-60 mb-4">
             <label for="city">Real Estate Type</label>
             <select name="re_type_id"
@@ -58,13 +33,49 @@ partial('header'); ?>
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="flex flex-col w-60">
+
+        <div class="flex flex-col w-60 mb-4">
+            <label for="area">Area</label>
+            <input type="text"
+                   name="area"
+                   id="area"
+                   class="p-1 border border-black">
+        </div>
+
+        <div class="flex flex-col w-60 mb-4">
+            <label for=price"">Price</label>
+            <input type="text"
+                   name="price"
+                   id="price"
+                   class="p-1 border border-black">
+        </div>
+
+        <div class="flex flex-col w-60 mb-4">
+            <label for="year">Year</label>
+            <input type="text"
+                   name="year"
+                   id="year"
+                   class="p-1 border border-black">
+        </div>
+
+        <div class="flex flex-col w-60 mb-4">
             <label for="description">Description</label>
             <textarea name="description"
                       id="description"
                       class="p-1 border border-black"></textarea>
         </div>
+
+        <div class="flex flex-col w-60">
+            <label for="photos">Add photos</label>
+            <input type="file"
+                   name="photos[]"
+                   id="photos"
+                   multiple
+                   class="p-1 border border-black">
+        </div>
+
         <button>Submit</button>
+
     </form>
 
 <?php

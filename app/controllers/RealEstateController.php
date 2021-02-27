@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AdType;
 use App\Models\City;
+use App\Models\Photo;
 use App\Models\RealEstate;
 use App\Models\ReType;
 
@@ -37,7 +38,22 @@ class RealEstateController
 
     public function store()
     {
-        RealEstate::insert($_POST);
+
+        $real_estate_id = RealEstate::insert($_POST);
+
+        if ( ! file_exists(__DIR__ . "/../../uploads")) {
+            mkdir(__DIR__ . "/../../uploads");
+        }
+        $total = count($_FILES['photos']['name']);
+        for( $i=0 ; $i < $total ; $i++ ) {
+            $tmpFilePath = $_FILES['photos']['tmp_name'][$i];
+            if ($tmpFilePath != ""){
+                $newFilePath = __DIR__ . "/../../uploads/" . $_FILES['photos']['name'][$i];
+                if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+                    Photo::insert(['real_estate_id' => $real_estate_id, 'path' => $newFilePath]);
+                }
+            }
+        }
 
         return redirect("real-estates");
     }

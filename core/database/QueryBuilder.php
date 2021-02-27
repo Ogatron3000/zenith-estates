@@ -74,6 +74,7 @@ class QueryBuilder
             // this is not good!
             // first PREPARE, then BIND parameters!!!
             Database::query("INSERT INTO {$table} ({$keys}) VALUES ({$values})");
+            return Database::lastInsertId();
         } catch (Exception $e) {
             die('Whoops, something went wrong.');
         }
