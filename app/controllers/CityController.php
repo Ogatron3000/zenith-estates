@@ -20,7 +20,8 @@ class CityController
         ]);
 
         if (count($errors) > 0) {
-            return view('cities.index');
+            $cities = City::all();
+            return view('cities.index', compact('errors', 'cities'));
         }
 
         City::insert($validated);
@@ -39,15 +40,15 @@ class CityController
         return view('cities.edit', compact('city'));
     }
 
-    public function update()
+    public function update($id)
     {
         [$validated, $errors] = validate([
             'name' => ['required', 'string'],
         ]);
 
-
         if (count($errors) > 0) {
-            return view('cities.index');
+            $city = City::findById($id);
+            return view('cities.edit', compact('errors', 'city'));
         }
 
         City::update($validated);

@@ -13,14 +13,15 @@ class ReTypeController
         return view('re-types.index', ['re_types' => ReType::all()]);
     }
 
-    public function store()
+    public function store($id)
     {
         [$validated, $errors] = validate([
             'name' => ['required', 'string'],
         ]);
 
         if (count($errors) > 0) {
-            return view('re-types.index');
+            $re_types = ReType::all();
+            return view('re-types.index', compact('errors', 're_types'));
         }
 
         ReType::insert($validated);
@@ -39,7 +40,7 @@ class ReTypeController
         return view('re-types.edit', compact('re_type'));
     }
 
-    public function update()
+    public function update($id)
     {
         [$validated, $errors] = validate([
             'name' => ['required', 'string'],
@@ -47,7 +48,8 @@ class ReTypeController
 
 
         if (count($errors) > 0) {
-            return view('re-types.index');
+            $re_type = ReType::findById($id);
+            return view('re-types.edit', compact('errors', 're_type'));
         }
 
         ReType::update($validated);
