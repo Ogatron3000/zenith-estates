@@ -16,9 +16,10 @@ function redirect($path)
     header("Location: /{$path}");
 }
 
-function dd($value)
+function dd($data)
 {
-    return die(var_dump($value));
+    return die(highlight_string("<?php\n\$value =\n" . var_export($data, true) . ";\n?>"));
+    //    return die('<pre>' . var_export($data, true) . '</pre>');
 }
 
 
