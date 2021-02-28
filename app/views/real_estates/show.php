@@ -1,5 +1,6 @@
 <?php
-partial('header'); ?>
+partial('header');
+partial('navbar'); ?>
 
     <div class="flex m-8">
         <div class="w-1/4 mr-8">

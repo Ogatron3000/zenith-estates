@@ -1,5 +1,6 @@
 <?php
-partial('header'); ?>
+partial('header');
+partial('navbar'); ?>
 
     <div class="w-5/12 mx-auto my-8 p-12 text-black bg-blue-100 rounded-lg">
         <h1 class="mb-6 text-2xl text-center">Add Real Estate Ad</h1>

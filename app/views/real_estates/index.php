@@ -1,5 +1,6 @@
 <?php
-partial('header'); ?>
+partial('header');
+partial('navbar'); ?>
 
 <div class="flex justify-between">
 
@@ -46,7 +47,7 @@ partial('header'); ?>
     </div>
 
 
-    <div class="w-1/4 p-8 bg-blue-300 text-white sticky top-14 h-screen z-10">
+    <div class="w-1/4 p-8 bg-blue-100 sticky top-14 h-screen z-10">
         <h2 class="mb-4">Find Real Estate:</h2>
         <form action="/real-estates/search" method="GET" class="text-sm">
 
@@ -124,7 +125,7 @@ partial('header'); ?>
                 <?= isset($errors) && array_key_exists('description', $errors) ? '<p class="text-sm text-red-500">' . $errors['description'] . '</p>' : '' ?>
             </div>
 
-            <button class="bg-blue-400 w-full py-2 font-bold text-md hover:bg-blue-500">Search</button>
+            <button class="w-full py-2 bg-blue-400 rounded-full text-white hover:bg-blue-300">Submit</button>
 
         </form>
     </div>

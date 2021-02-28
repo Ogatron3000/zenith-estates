@@ -9,6 +9,3 @@
     <title>Zenith Estates</title>
 </head>
 <body class="relative">
-
-<?php
-partial('navbar'); ?>
