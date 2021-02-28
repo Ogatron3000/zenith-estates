@@ -100,6 +100,7 @@ class RealEstateController
     public function update($id)
     {
         [$validated, $errors] = validate([
+            'id' => ['required', 'int'],
             'city_id' => ['required', 'int'],
             'ad_type_id' => ['required', 'int'],
             're_type_id' => ['required', 'int'],

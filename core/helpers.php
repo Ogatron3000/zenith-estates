@@ -43,9 +43,6 @@ function old($value, $old)
 function validate($data, $validateFiles = false) {
 
     $validated = [];
-    if (array_key_exists('id', $_POST)) {
-        $validated['id'] = $_POST['id'];
-    }
     $errors = [];
     $old = [];
 
