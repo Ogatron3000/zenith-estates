@@ -8,7 +8,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <title>Zenith Estates</title>
 </head>
-<body>
+<body class="relative">
 
 <?php
 partial('navbar'); ?>

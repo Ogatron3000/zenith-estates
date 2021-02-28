@@ -25,7 +25,7 @@ function dd($data)
 
 function partial($file)
 {
-    return require(__DIR__ . "/../app/views/partials/_{$file}.php");
+    return require(__DIR__ . "/../app/views/_partials/_{$file}.php");
 }
 
 function abort()
