@@ -70,6 +70,20 @@ function validate($data, $validateFiles = ['required' => false, 'extension' => f
                         continue 3;
                     }
                     break;
+                case (strpos($req, 'max') !== false):
+                    $maxValue = explode(':', $req)[1];
+                    if ($_POST[$field] > $maxValue) {
+                        $errors[$field] = "Filed cannot be bigger than {$maxValue}.";
+                        continue 3;
+                    }
+                    break;
+                case (strpos($req, 'min') !== false):
+                    $minValue = explode(':', $req)[1];
+                    if ($_POST[$field] < $minValue) {
+                        $errors[$field] = "Filed cannot be smaller than {$minValue}.";
+                        continue 3;
+                    }
+                    break;
             }
         }
 

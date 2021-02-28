@@ -61,9 +61,9 @@ class RealEstateController
             'city_id' => ['required', 'int'],
             'ad_type_id' => ['required', 'int'],
             're_type_id' => ['required', 'int'],
-            'area' => ['required', 'int'],
-            'price' => ['required', 'int'],
-            'year' => ['required', 'int'],
+            'area' => ['required', 'int', 'max:1000000', 'min:0'],
+            'price' => ['required', 'int', 'max:1000000', 'min:0'],
+            'year' => ['required', 'int', 'max:2021', 'min:1900'],
             'description' => ['required', 'string']
         ], ['required' => true, 'extension' => true]);
 
@@ -104,9 +104,9 @@ class RealEstateController
             'city_id' => ['required', 'int'],
             'ad_type_id' => ['required', 'int'],
             're_type_id' => ['required', 'int'],
-            'area' => ['required', 'int'],
-            'price' => ['required', 'int'],
-            'year' => ['required', 'int'],
+            'area' => ['required', 'int', 'max:1000000', 'min:0'],
+            'price' => ['required', 'int', 'max:1000000', 'min:0'],
+            'year' => ['required', 'int', 'max:2021', 'min:1900'],
             'description' => ['required', 'string']
         ], ['required' => false, 'extension' => true]);
 
