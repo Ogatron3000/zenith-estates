@@ -33,7 +33,7 @@ function abort()
     return view('404');
 }
 
-function validate($data) {
+function validate($data, $validateFiles = false) {
 
     $validated = [];
     $errors = [];
@@ -67,7 +67,7 @@ function validate($data) {
         }
     }
 
-        if (array_key_exists('photos', $_FILES)) {
+        if ($validateFiles) {
             if ($_FILES['photos']['error'][0] === 4) {
                 $errors['photos'] = 'Field is required.';
             } else {
