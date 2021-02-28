@@ -58,7 +58,11 @@ partial('navbar'); ?>
                         class="p-1 mt-1 text-black">
                     <option value=""></option>
                     <?php foreach ($cities as $key => $value): ?>
-                        <option value="<?= $cities[$key]->id ?>"><?= $cities[$key]->name ?></option>
+                        <option value="<?= $cities[$key]->id ?>"
+                            <?= isset($old) && array_key_exists('city_id', $old) && $old['city_id'] === $cities[$key]->id ? 'selected' : '' ?>
+                        >
+                            <?= $cities[$key]->name ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
                 <?= isset($errors) && array_key_exists('city_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['city_id'] . '</p>' : '' ?>
@@ -71,7 +75,11 @@ partial('navbar'); ?>
                         class="p-1 mt-1 text-black">
                     <option value=""></option>
                     <?php foreach ($ad_types as $key => $value): ?>
-                        <option value="<?= $ad_types[$key]->id ?>"><?= $ad_types[$key]->name ?></option>
+                        <option value="<?= $ad_types[$key]->id ?>"
+                            <?= isset($old) && array_key_exists('ad_type_id', $old) && $old['ad_type_id'] === $ad_types[$key]->id ? 'selected' : '' ?>
+                        >
+                            <?= $ad_types[$key]->name ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
                 <?= isset($errors) && array_key_exists('ad_type_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['ad_type_id'] . '</p>' : '' ?>
@@ -84,7 +92,11 @@ partial('navbar'); ?>
                         class="p-1 mt-1 text-black">
                     <option value=""></option>
                     <?php foreach ($re_types as $key => $value): ?>
-                        <option value="<?= $re_types[$key]->id ?>"><?= $re_types[$key]->name ?></option>
+                        <option value="<?= $re_types[$key]->id ?>"
+                            <?= isset($old) && array_key_exists('re_type_id', $old) && $old['re_type_id'] === $re_types[$key]->id ? 'selected' : '' ?>
+                        >
+                            <?= $re_types[$key]->name ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
                 <?= isset($errors) && array_key_exists('re_type_id', $errors) ? '<p class="text-sm text-red-500">' . $errors['re_type_id'] . '</p>' : '' ?>
@@ -95,6 +107,7 @@ partial('navbar'); ?>
                 <input type="text"
                        name="area"
                        id="area"
+                       value="<?= isset($old) && array_key_exists('area', $old) ? $old['area'] : '' ?>"
                        class="p-1 mt-1 text-black">
                 <?= isset($errors) && array_key_exists('area', $errors) ? '<p class="text-sm text-red-500">' . $errors['area'] . '</p>' : '' ?>
             </div>
@@ -104,6 +117,7 @@ partial('navbar'); ?>
                 <input type="text"
                        name="price"
                        id="price"
+                       value="<?= isset($old) && array_key_exists('price', $old) ? $old['price'] : '' ?>"
                        class="p-1 mt-1 text-black">
                 <?= isset($errors) && array_key_exists('price', $errors) ? '<p class="text-sm text-red-500">' . $errors['price'] . '</p>' : '' ?>
             </div>
@@ -113,6 +127,7 @@ partial('navbar'); ?>
                 <input type="text"
                        name="year"
                        id="year"
+                       value="<?= isset($old) && array_key_exists('year', $old) ? $old['year'] : '' ?>"
                        class="p-1 mt-1 text-black">
                 <?= isset($errors) && array_key_exists('year', $errors) ? '<p class="text-sm text-red-500">' . $errors['year'] . '</p>' : '' ?>
             </div>
@@ -121,7 +136,7 @@ partial('navbar'); ?>
                 <label for="description">Description</label>
                 <textarea name="description"
                           id="description"
-                          class="p-1 mt-1 text-black"></textarea>
+                          class="p-1 mt-1 text-black"><?= isset($old) && array_key_exists('description', $old) ? $old['description'] : '' ?></textarea>
                 <?= isset($errors) && array_key_exists('description', $errors) ? '<p class="text-sm text-red-500">' . $errors['description'] . '</p>' : '' ?>
             </div>
 

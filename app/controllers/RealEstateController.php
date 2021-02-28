@@ -25,13 +25,14 @@ class RealEstateController
 
     public function search()
     {
-        $real_estates = RealEstate::search(Request::query());
+        $old = Request::query();
+        $real_estates = RealEstate::search($old);
         $cities   = City::all();
         $ad_types = AdType::all();
         $re_types = ReType::all();
 
         return view('real_estates.index',
-            compact('real_estates', 'cities', 'ad_types', 're_types'));
+            compact('old', 'real_estates', 'cities', 'ad_types', 're_types'));
     }
 
     public function show($id)
