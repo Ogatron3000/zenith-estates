@@ -64,8 +64,9 @@ class RealEstateController
             'area' => ['required', 'int', 'max:1000000', 'min:0'],
             'price' => ['required', 'int', 'max:1000000', 'min:0'],
             'year' => ['required', 'int', 'max:2021', 'min:1900'],
-            'description' => ['required', 'string']
-        ], ['required' => true, 'extension' => true]);
+            'description' => ['required', 'string'],
+            'photos' => ['required', 'extension']
+        ]);
 
         if (count($errors) > 0) {
             $cities   = City::all();
@@ -107,8 +108,9 @@ class RealEstateController
             'area' => ['required', 'int', 'max:1000000', 'min:0'],
             'price' => ['required', 'int', 'max:1000000', 'min:0'],
             'year' => ['required', 'int', 'max:2021', 'min:1900'],
-            'description' => ['required', 'string']
-        ], ['required' => false, 'extension' => true]);
+            'description' => ['required', 'string'],
+            'photos' => ['extension']
+        ]);
 
         if (count($errors) > 0) {
             $real_estate = RealEstate::findById($id);
