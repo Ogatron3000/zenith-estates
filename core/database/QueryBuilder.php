@@ -5,32 +5,10 @@ namespace Core\Database;
 use Core\App;
 
 use Core\Database\Database;
+use PDOException;
 
 class QueryBuilder
 {
-
-    //    protected PDO $pdo;
-    //
-    //    public function __construct(PDO $pdo)
-    //    {
-    //        $this->pdo = $pdo;
-    //    }
-
-    /*
-    connection -> app container
-    app container -> database
-    database -> query builder
-    query builder -> model
-    model -> controller
-
-    connection -> app container
-    app container -> database
-    database -> query builder
-    query builder -> app container
-    app container -> Model
-    Model -> model
-    model -> controller
-    */
 
     private static int $class_code = 8;
 
@@ -60,8 +38,13 @@ class QueryBuilder
         }
         $conditions = implode(' AND ', $conditions);
 
-        return Database::query("SELECT * FROM $table WHERE $conditions")
-            ->fetchAll(self::$class_code, $model);
+        try {
+            return Database::query("SELECT * FROM $table WHERE $conditions")
+                ->fetchAll(self::$class_code, $model);
+        } catch (PDOException $e) {
+            return self::all($table);
+        }
+
     }
 
     public static function findById($id, $table = '')
