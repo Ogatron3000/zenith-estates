@@ -1,23 +1,27 @@
 <?php
 partial('header'); ?>
 
-<form action="./" method="POST" class="p-4">
-    <input type="hidden" name="method" value="PUT">
-    <input type="hidden" name="id" value="<?= $city->id ?>">
+<div class="w-1/4 p-4 m-8 border-2 border-indigo-500">
 
-    <div class="flex flex-col w-60">
-        <label for="name">City name:</label>
-        <input type="text"
-               name="name"
-               id="name"
-               class="p-1 border border-black"
-               value="<?= $city->name ?>">
-        <?= isset($errors) && array_key_exists('name', $errors) ? '<p class="text-sm text-red-500">' . $errors['name'] . '</p>' : '' ?>
-    </div>
+    <form action="./" method="POST">
 
-    <button class="border border-black p-3 mt-4">Submit</button>
+        <input type="hidden" name="method" value="PUT">
+        <input type="hidden" name="id" value="<?= $city->id ?>">
 
-</form>
+        <div class="flex flex-col">
+            <label for="name">City name:</label>
+            <input type="text"
+                   name="name"
+                   id="name"
+                   value="<?= $city->name ?>"
+                   class="p-1 mt-2 border-2 border-indigo-500 outline-none">
+            <?= isset($errors) && array_key_exists('name', $errors)
+                ? '<p class="text-sm text-red-500">' . $errors['name'] . '</p>'
+                : '' ?>
+            <button class="p-3 mt-4 bg-indigo-500 text-white">Submit</button>
+        </div>
+    </form>
+</div>
 
 <?php
 partial('footer'); ?>
