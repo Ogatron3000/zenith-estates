@@ -3,7 +3,7 @@ partial('header'); ?>
 
 <div class="flex justify-between">
 
-    <div class="grid m-8 grid-cols-6 gap-8 w-full h-1/2">
+    <div class="grid m-8 grid-cols-6 gap-8 w-full h-1/2 w-3/4">
         <?php
         foreach ($real_estates as $real_estate): ?>
             <div class="p-6 bg-gray-100 col-span-2">
@@ -44,7 +44,7 @@ partial('header'); ?>
     </div>
 
 
-    <div class="w-1/6 p-8 bg-indigo-500 text-white sticky top-14 h-screen z-10">
+    <div class="w-1/4 p-8 bg-indigo-500 text-white sticky top-14 h-screen z-10">
         <h2 class="mb-4">Find Real Estate:</h2>
         <form action="/real-estates/search" method="GET" class="text-sm">
 
