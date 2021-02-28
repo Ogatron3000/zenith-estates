@@ -10,7 +10,7 @@ use PDOException;
 class QueryBuilder
 {
 
-    //
+    // PDO CLASS CODE
     private static int $class_code = 8;
 
     public static function all($table = '')
