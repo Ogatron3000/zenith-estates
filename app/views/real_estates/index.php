@@ -29,12 +29,12 @@ partial('navbar'); ?>
                 </div>
                 <div class="flex justify-between mt-4">
                     <button class="w-1/3 bg-blue-400 rounded-full hover:bg-blue-300 text-white">
-                        <a href=<?= "real-estates/{$real_estate->id}" ?>>Details</a>
+                        <a href=<?= "/real-estates/{$real_estate->id}" ?>>Details</a>
                     </button>
                     <button class="w-1/3 py-1 mx-2 bg-blue-400 hover:bg-blue-300 rounded-full text-white">
-                        <a href=<?= "real-estates/{$real_estate->id}/edit" ?>>Edit</a>
+                        <a href=<?= "/real-estates/{$real_estate->id}/edit" ?>>Edit</a>
                     </button>
-                    <form action="<?= "real-estates/{$real_estate->id}" ?>"
+                    <form action="<?= "/real-estates/{$real_estate->id}" ?>"
                           method="POST"
                           class="w-1/3">
                         <input type="hidden" name="method" value="DELETE">
