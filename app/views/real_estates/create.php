@@ -129,7 +129,7 @@ partial('header'); ?>
                     . '</p>' : '' ?>
             </div>
 
-            <button class="p-3 mt-12 bg-indigo-300 w-full text-white text-lg">Submit</button>
+            <button class="p-3 mt-12 bg-indigo-500 w-full text-white text-lg">Submit</button>
 
         </form>
     </div>
