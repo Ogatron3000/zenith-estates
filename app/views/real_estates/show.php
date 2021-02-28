@@ -25,7 +25,7 @@ partial('navbar'); ?>
 
             <div class="flex flex-col justify-between mt-4 p-6 bg-gray-100 rounded-lg">
                 <span>Description:</span>
-                <p class="mt-2"><?= htmlspecialchars($real_estate->description) ?></p>
+                <p class="mt-2 break-words"><?= htmlspecialchars($real_estate->description) ?></p>
             </div>
 
             <div class="flex justify-between mt-4">
