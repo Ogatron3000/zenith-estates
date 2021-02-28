@@ -21,4 +21,11 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
+    public static function query()
+    {
+        $queries = [];
+        parse_str($_SERVER['QUERY_STRING'], $queries);
+        return $queries;
+    }
+
 }

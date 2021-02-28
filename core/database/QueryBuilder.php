@@ -45,6 +45,25 @@ class QueryBuilder
             ->fetchAll(self::$class_code, $model);
     }
 
+    public static function search($params, $table = '')
+    {
+        if ( ! $table) {
+            $table = self::determineTable($table);
+        }
+        $model = self::determineModel();
+
+        $conditions = [];
+        foreach ($params as $key => $value) {
+            if ( ! empty($value) ) {
+                $conditions[] = "{$key} = {$value}";
+            }
+        }
+        $conditions = implode(' AND ', $conditions);
+
+        return Database::query("SELECT * FROM $table WHERE $conditions")
+            ->fetchAll(self::$class_code, $model);
+    }
+
     public static function findById($id, $table = '')
     {
         if ( ! $table) {

@@ -7,13 +7,31 @@ use App\Models\City;
 use App\Models\Photo;
 use App\Models\RealEstate;
 use App\Models\ReType;
+use Core\Request;
 
 class RealEstateController
 {
 
     public function index()
     {
-        return view('real_estates.index', RealEstate::all());
+        $real_estates = RealEstate::all();
+        $cities   = City::all();
+        $ad_types = AdType::all();
+        $re_types = ReType::all();
+
+        return view('real_estates.index',
+            compact('real_estates', 'cities', 'ad_types', 're_types'));
+    }
+
+    public function search()
+    {
+        $real_estates = RealEstate::search(Request::query());
+        $cities   = City::all();
+        $ad_types = AdType::all();
+        $re_types = ReType::all();
+
+        return view('real_estates.index',
+            compact('real_estates', 'cities', 'ad_types', 're_types'));
     }
 
     public function show($id)

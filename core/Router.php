@@ -73,7 +73,7 @@ class Router
 
     private function routeParam($uri): array
     {
-        if (strpos($uri, '/') !== false && strpos($uri, 'create') === false) {
+        if (strpos($uri, '/') !== false && strpos($uri, 'create') === false && strpos($uri, 'search') === false) {
             $tmp    = explode('/', $uri);
             $param  = $tmp[1];
             $tmp[1] = '{id}';

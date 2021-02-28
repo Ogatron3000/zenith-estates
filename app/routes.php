@@ -5,6 +5,7 @@ $router->get('', 'WelcomeController@index');
 
 // Real Estates
 $router->get('real-estates', 'RealEstateController@index');
+$router->get('real-estates/search', 'RealEstateController@search');
 $router->get('real-estates/create', 'RealEstateController@create');
 $router->get('real-estates/{id}', 'RealEstateController@show');
 $router->post('real-estates', 'RealEstateController@store');
