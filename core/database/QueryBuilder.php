@@ -33,7 +33,7 @@ class QueryBuilder
         $conditions = [];
         foreach ($params as $key => $value) {
             if ( ! empty($value) ) {
-                $conditions[] = "{$key} = {$value}";
+                $conditions[] = "{$key} LIKE '%{$value}%'";
             }
         }
         $conditions = implode(' AND ', $conditions);
