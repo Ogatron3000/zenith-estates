@@ -43,6 +43,7 @@ class CityController
     public function update($id)
     {
         [$validated, $errors] = validate([
+            'id' => ['required', 'int'],
             'name' => ['required', 'string'],
         ]);
 
