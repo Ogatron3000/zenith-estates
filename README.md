@@ -8,3 +8,8 @@ $ git clone https://github.com/Ogatron3000/zenith-estates.git
 ````shell
 $ composer dumpautoload
 ````
+To run migrations and seeder:
+```shell
+$ php migrations.php
+$ php seeder.php
+```
