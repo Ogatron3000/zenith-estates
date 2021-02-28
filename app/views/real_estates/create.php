@@ -1,7 +1,7 @@
 <?php
 partial('header'); ?>
 
-    <div class="w-5/12 mx-auto my-12 p-12 text-white bg-indigo-500">
+    <div class="w-5/12 mx-auto my-12 p-12 text-white bg-indigo-300">
         <h1 class="mb-8 text-2xl text-center">New Real Estate Ad Form</h1>
         <form action="../real-estates"
               method="POST"
@@ -15,7 +15,7 @@ partial('header'); ?>
                     <?php
                     foreach ($cities as $key => $value): ?>
                         <option value="<?= $cities[$key]->id ?>"
-                            <?= old('city_id', $old) === $cities[$key]->id
+                            <?= isset($old) && $old['city_id'] === $cities[$key]->id
                                 ? 'selected' : '' ?>
                         >
                             <?= $cities[$key]->name ?>
@@ -36,7 +36,7 @@ partial('header'); ?>
                     <?php
                     foreach ($ad_types as $key => $value): ?>
                         <option value="<?= $ad_types[$key]->id ?>"
-                            <?= old('ad_type_id', $old) === $ad_types[$key]->id
+                            <?= isset($old) && $old['ad_type_id'] === $ad_types[$key]->id
                                 ? 'selected' : '' ?>
                         >
                             <?= $ad_types[$key]->name ?>
@@ -57,7 +57,7 @@ partial('header'); ?>
                     <?php
                     foreach ($re_types as $key => $value): ?>
                         <option value="<?= $re_types[$key]->id ?>"
-                            <?= old('re_type_id', $old) === $re_types[$key]->id
+                            <?= isset($old) && $old['re_type_id'] === $re_types[$key]->id
                                 ? 'selected' : '' ?>
                         >
                             <?= $re_types[$key]->name ?>
@@ -75,7 +75,7 @@ partial('header'); ?>
                 <input type="text"
                        name="area"
                        id="area"
-                       value="<?= old('area', $old) ?>"
+                       value="<?= isset($old) ? $old['area'] : '' ?>"
                        class="p-1 mt-2 text-black">
                 <?= isset($errors) && array_key_exists('area', $errors)
                     ? '<p class="text-sm text-red-500">' . $errors['area']
@@ -87,7 +87,7 @@ partial('header'); ?>
                 <input type="text"
                        name="price"
                        id="price"
-                       value="<?= old('price', $old) ?>"
+                       value="<?= isset($old) ? $old['price'] : '' ?>"
                        class="p-1 mt-2 text-black">
                 <?= isset($errors) && array_key_exists('price', $errors)
                     ? '<p class="text-sm text-red-500">' . $errors['price']
@@ -99,7 +99,7 @@ partial('header'); ?>
                 <input type="text"
                        name="year"
                        id="year"
-                       value="<?= old('year', $old) ?>"
+                       value="<?= isset($old) ? $old['year'] : '' ?>"
                        class="p-1 mt-2 text-black">
                 <?= isset($errors) && array_key_exists('year', $errors)
                     ? '<p class="text-sm text-red-500">' . $errors['year']
@@ -110,8 +110,7 @@ partial('header'); ?>
                 <label for="description">Description</label>
                 <textarea name="description"
                           id="description"
-                          class="p-1 mt-2 text-black"><?= old('description',
-                        $old) ?></textarea>
+                          class="p-1 mt-2 text-black"><?= isset($old) ? $old['description'] : '' ?></textarea>
                 <?= isset($errors) && array_key_exists('description', $errors)
                     ? '<p class="text-sm text-red-500">'
                     . $errors['description'] . '</p>' : '' ?>
