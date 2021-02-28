@@ -1,0 +1,11 @@
+button:focus {
+    outline: 0;
+}
+
+input:focus {
+    outline: cornflowerblue 2px solid;
+}
+
+textarea:focus {
+    outline: cornflowerblue 2px solid;
+}

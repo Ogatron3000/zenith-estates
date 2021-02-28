@@ -1,7 +1,7 @@
 <?php partial('header'); ?>
 
 
-    <div class="h-screen flex flex-col justify-center items-center" style='background-image: url("/public/welcome.jpg"); background-size: cover'>
+    <div class="h-screen flex flex-col justify-center items-center" style='background-image: url("/public/img/welcome.jpg"); background-size: cover'>
         <div class="bg-white px-4 py-3 opacity-80 rounded-lg text-blue-400">
             <a href="real-estates"><h1 class="text-8xl mb-2">Zenith Estates</h1></a>
             <div class="flex justify-between">
