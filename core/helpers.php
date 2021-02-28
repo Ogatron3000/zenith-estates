@@ -33,12 +33,26 @@ function abort()
     return view('404');
 }
 
+function old($value, $old)
+{
+    if (isset($old) && array_key_exists($value, $old)) {
+        return $old[$value];
+    }
+}
+
 function validate($data, $validateFiles = false) {
 
     $validated = [];
+    if (array_key_exists('id', $_POST)) {
+        $validated['id'] = $_POST['id'];
+    }
     $errors = [];
+    $old = [];
 
     foreach ($data as $field => $reqs) {
+
+        $old[$field] = $_POST[$field];
+
         foreach ($reqs as $req) {
             switch ($req) {
                 case 'required':
@@ -61,10 +75,8 @@ function validate($data, $validateFiles = false) {
                     break;
             }
         }
-        if ( ! array_key_exists($field, $errors)) {
-            $validated['id'] = $_POST['id'];
-            $validated[$field] = $_POST[$field];
-        }
+
+        $validated[$field] = $_POST[$field];
     }
 
         if ($validateFiles) {
@@ -81,5 +93,5 @@ function validate($data, $validateFiles = false) {
             }
     }
 
-    return [$validated, $errors];
+    return [$validated, $errors, $old];
 }

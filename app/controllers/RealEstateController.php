@@ -57,7 +57,7 @@ class RealEstateController
 
     public function store()
     {
-        [$validated, $errors] = validate([
+        [$validated, $errors, $old] = validate([
             'city_id' => ['required', 'int'],
             'ad_type_id' => ['required', 'int'],
             're_type_id' => ['required', 'int'],
@@ -71,7 +71,7 @@ class RealEstateController
             $cities   = City::all();
             $ad_types = AdType::all();
             $re_types = ReType::all();
-            return view('real_estates.create', compact('errors', 'cities', 'ad_types', 're_types'));
+            return view('real_estates.create', compact('errors', 'old', 'cities', 'ad_types', 're_types'));
         }
 
         $real_estate_id = RealEstate::insert($validated);
