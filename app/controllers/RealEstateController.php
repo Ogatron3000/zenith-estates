@@ -65,7 +65,7 @@ class RealEstateController
             'price' => ['required', 'int'],
             'year' => ['required', 'int'],
             'description' => ['required', 'string']
-        ], true);
+        ], ['required' => true, 'extension' => true]);
 
         if (count($errors) > 0) {
             $cities   = City::all();
@@ -108,7 +108,7 @@ class RealEstateController
             'price' => ['required', 'int'],
             'year' => ['required', 'int'],
             'description' => ['required', 'string']
-        ]);
+        ], ['required' => false, 'extension' => true]);
 
         if (count($errors) > 0) {
             $real_estate = RealEstate::findById($id);

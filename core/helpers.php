@@ -40,7 +40,7 @@ function old($value, $old)
     }
 }
 
-function validate($data, $validateFiles = false) {
+function validate($data, $validateFiles = ['required' => false, 'extension' => false]) {
 
     $validated = [];
     $errors = [];
@@ -76,19 +76,20 @@ function validate($data, $validateFiles = false) {
         $validated[$field] = $_POST[$field];
     }
 
-        if ($validateFiles) {
-            if ($_FILES['photos']['error'][0] === 4) {
-                $errors['photos'] = 'Field is required.';
-            } else {
-                $total = count($_FILES['photos']['name']);
-                for ($i = 0; $i < $total; $i++) {
-                    $fileInfo    = pathinfo($_FILES["photos"]["name"][$i]);
-                    if ( ! ($fileInfo['extension'] === 'png' || $fileInfo['extension'] === 'jpg') ) {
-                        $errors['photos'] = 'Photos must be .png or .jpg.';
-                    }
-                }
+
+    if ($validateFiles['required'] && $_FILES['photos']['error'][0] === 4) {
+        $errors['photos'] = 'Field is required.';
+    } else if ($validateFiles['extension']) {
+        $total = count($_FILES['photos']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            $fileInfo    = pathinfo($_FILES["photos"]["name"][$i]);
+            if ( ! ($fileInfo['extension'] === 'png' || $fileInfo['extension'] === 'jpg') ) {
+                $errors['photos'] = 'Photos must be .png or .jpg.';
             }
+        }
     }
+
+
 
     return [$validated, $errors, $old];
 }
